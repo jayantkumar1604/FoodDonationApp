@@ -24,5 +24,11 @@ public class FoodDonationController {
     public List<FoodDonation> getFoodList() {
         return service.getAllFood();
     }
+
+    @PutMapping("/pickup/{id}")
+    public FoodDonation pickUpFood(@PathVariable Long id) {
+        return service.markAsPickedUp(id);
+    }
+
 }
 

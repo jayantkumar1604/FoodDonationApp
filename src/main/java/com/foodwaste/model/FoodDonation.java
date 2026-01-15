@@ -21,14 +21,22 @@ public class FoodDonation {
     private String foodType;
 
     private int quantity;
+
     private String location;
 
     @Column(name = "expiry_time")
     private String expiryTime;
 
+    // 🆕 Donation Status
+    @Column(name = "status")
+    private String status;
+
     // ✅ REQUIRED by JPA
     public FoodDonation() {}
 
-    // ✅ Getters & Setters (VERY IMPORTANT)
-
+    // 🆕 Set default status before insert
+    @PrePersist
+    public void setDefaultStatus() {
+        this.status = "AVAILABLE";
+    }
 }
